@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <h1>System Dashboard</h1>
+      <h1>LocalHost AI Agent Hub: Ultimate All-In-One AI Operating System</h1>
       <p>Monitor the status and metrics of all services in the system.</p>
 
       {isLoading && <p>Loading service statuses...</p>}
@@ -62,15 +62,15 @@ const Dashboard: React.FC = () => {
                   <tr key={service.name}>
                     <td>{service.name}</td>
                     <td>{renderServiceStatus(service.status)}</td>
-                    <td>{service.cpuUsage || 'N/A'}</td>
-                    <td>{service.memoryUsage || 'N/A'}</td>
-                    <td>{service.uptime || 'N/A'}</td>
+                    <td>{service.cpuUsage}</td>
+                    <td>{service.memoryUsage}</td>
+                    <td>{service.uptime}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <p>No services available to display.</p>
+            <p>No services available.</p>
           )}
         </div>
       )}
@@ -79,65 +79,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-
-<style>
-.dashboard {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-}
-
-.services-container {
-  margin-top: 20px;
-}
-
-.services-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.services-table th,
-.services-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.services-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-.status {
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.status.running {
-  background-color: #4caf50;
-}
-
-.status.stopped {
-  background-color: #f44336;
-}
-
-.status.error {
-  background-color: #ff9800;
-}
-
-.status.unknown {
-  background-color: #9e9e9e;
-}
-</style>
