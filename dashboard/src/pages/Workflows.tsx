@@ -58,28 +58,34 @@ const Workflows: React.FC = () => {
         setIsEditing(true);
     };
 
+    const handleCancelEdit = () => {
+        setIsEditing(false);
+        setSelectedWorkflow(null);
+    };
+
     return (
-        <div className="workflows-container">
+        <div>
             <h1>Workflows</h1>
-            {loading && <p>Loading workflows...</p>}
-            {error && <p className="error">{error}</p>}
-            <WorkflowForm
-                onSubmit={isEditing ? handleUpdate : handleCreate}
-                initialData={isEditing ? selectedWorkflow : null}
-                onCancel={() => {
-                    setIsEditing(false);
-                    setSelectedWorkflow(null);
-                }}
-            />
-            <ul>
-                {workflows.map(workflow => (
-                    <li key={workflow.id}>
-                        <span>{workflow.name}</span>
-                        <button onClick={() => handleEdit(workflow)}>Edit</button>
-                        <button onClick={() => handleDelete(workflow.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <div>
+                    {workflows.map(workflow => (
+                        <div key={workflow.id}>
+                            <h2>{workflow.name}</h2>
+                            <p>{workflow.description}</p>
+                            <button onClick={() => handleEdit(workflow)}>Edit</button>
+                            <button onClick={() => handleDelete(workflow.id)}>Delete</button>
+                        </div>
+                    ))}
+                    {isEditing ? (
+                        <WorkflowForm workflow={selectedWorkflow} onSubmit={handleUpdate} onCancel={handleCancelEdit} />
+                    ) : (
+                        <WorkflowForm onSubmit={handleCreate} />
+                    )}
+                </div>
+            )}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
 };
