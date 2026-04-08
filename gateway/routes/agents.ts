@@ -67,7 +67,6 @@ router.put('/:id', (req: Request, res: Response) => {
   }
 
   const agentIndex = agents.findIndex((agent) => agent.id === id);
-
   if (agentIndex === -1) {
     return res.status(404).json({ success: false, message: 'Agent not found.' });
   }
@@ -82,14 +81,30 @@ router.delete('/:id', (req: Request, res: Response) => {
   const { id } = req.params;
 
   const agentIndex = agents.findIndex((agent) => agent.id === id);
-
   if (agentIndex === -1) {
     return res.status(404).json({ success: false, message: 'Agent not found.' });
   }
 
-  const deletedAgent = agents.splice(agentIndex, 1);
+  agents.splice(agentIndex, 1);
 
-  res.status(200).json({ success: true, agent: deletedAgent[0] });
+  res.status(200).json({ success: true, message: 'Agent deleted successfully.' });
+});
+
+// Route to assign a task to an agent
+router.post('/:id/task', (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { task } = req.body;
+
+  const agent = agents.find((agent) => agent.id === id);
+  if (!agent) {
+    return res.status(404).json({ success: false, message: 'Agent not found.' });
+  }
+
+  // Assign task to agent (logic to be implemented based on the task and agent type)
+  // For demonstration purposes, just log the task
+  global.console.log(`Task assigned to agent ${agent.name}: ${task}`);
+
+  res.status(200).json({ success: true, message: 'Task assigned to agent successfully.' });
 });
 
 export default router;
