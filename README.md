@@ -1,11 +1,190 @@
-# 🤖 LocalHost AI Agent Hub: Ultimate All-In-One AI Operating System
+# localhost-ai-hub 🚀
 
-## Full Builder Prompt
+**Express Gateway + React Dashboard Monorepo**
 
-Copy everything below and paste into Discord `/build` command:
+A production-ready full-stack application with:
+- ✅ **Express API Gateway** (Node.js + TypeScript) on port 3001
+- ✅ **React Dashboard** (React + Vite + TypeScript) on port 3000
+- ✅ **Vercel Deployment** (Free tier compatible)
+- ✅ **Discord Bot Integration** (Deploy with one command)
+
+---
+
+## 🎯 Quick Start
+
+### Install All Dependencies
+```bash
+npm run install-all
+```
+
+### Development
+```bash
+# Terminal 1 - Start Gateway (port 3001)
+npm run dev:gateway
+
+# Terminal 2 - Start Dashboard (port 3000)
+npm run dev:dashboard
+```
+
+**Visit**: http://localhost:3000
+
+### Build for Production
+```bash
+npm run build-all
+```
+
+### Deploy to Vercel
+```bash
+# Push to GitHub
+git push origin main
+
+# In Discord:
+/deploy repo: arnav1771/localhost-ai-hub
+```
+
+---
+
+## 📊 Project Structure
 
 ```
-/build Create "LocalHost AI Agent Hub" - The ultimate all-in-one AI agent orchestration system integrating 25+ open-source AI tools. Complete local "AI Operating System" with orchestration, browser automation, multi-agent teams, knowledge management, and unified dashboard - zero cloud, 100% private.
+localhost-ai-hub/
+├── package.json                  (Root - Workspace manager)
+├── tsconfig.json                 (Root - TypeScript config)
+├── vercel.json                   (Vercel deployment config)
+│
+├── gateway/                      (Express API Server)
+│   ├── package.json             
+│   ├── tsconfig.json
+│   └── src/
+│       └── server.ts            (Express app)
+│
+└── dashboard/                    (React Frontend)
+    ├── package.json
+    ├── tsconfig.json
+    ├── vite.config.ts
+    ├── index.html
+    └── src/
+        ├── App.tsx
+        ├── main.tsx
+        └── index.css
+```
+
+---
+
+## 🔌 API Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/health` | GET | Health check |
+| `/api` | GET | API info |
+| `/api/status` | GET | Gateway status |
+| `/api/echo` | POST | Echo request |
+
+---
+
+## 🤖 Discord Bot Commands
+
+```bash
+# Deploy to Vercel
+/deploy repo: arnav1771/localhost-ai-hub
+
+# Update & redeploy
+/update repo: arnav1771/localhost-ai-hub changes: description
+
+# Validate tokens
+/keys
+
+# Check status
+/status
+
+# Show help
+/help
+```
+
+---
+
+## 📦 Tech Stack
+
+| Component | Tech | Version |
+|-----------|------|---------|
+| Backend | Node.js + Express + TypeScript | 18 / 4.18 / 5.0 |
+| Frontend | React + Vite + TypeScript | 18.2 / 4.3 / 5.0 |
+| Styling | Tailwind CSS | 3.3 |
+| State | Zustand | 4.3 |
+| Deployment | Vercel | Free Tier |
+
+---
+
+## 🚀 Commands
+
+```bash
+# Install all
+npm run install-all
+
+# Build all
+npm run build-all
+
+# Build individual
+npm run build:gateway
+npm run build:dashboard
+
+# Development
+npm run dev:gateway
+npm run dev:dashboard
+
+# Production
+npm start
+```
+
+---
+
+## 📚 Documentation
+
+- **Setup Guides**: See `/packages/localhost-ai-hub/` in the turmux_builder repo
+- **Full Setup**: https://github.com/Arnav1771/localhost-ai-hub
+- **API Docs**: See endpoints section above
+
+---
+
+## 🔐 Environment Variables
+
+Create `.env` file:
+```bash
+GATEWAY_PORT=3001
+NODE_ENV=development
+REACT_APP_API_URL=http://localhost:3001/api
+```
+
+---
+
+## ✅ Features
+
+✅ Express API with CORS & Security (Helmet)  
+✅ React Dashboard with real-time status updates  
+✅ TypeScript throughout for type safety  
+✅ Vite for fast builds  
+✅ Dual-build Vercel configuration  
+✅ WebSocket support  
+✅ Logging with Winston  
+✅ Production-ready error handling  
+
+---
+
+## 📞 Support
+
+- **Documentation**: See setup guides in repo
+- **GitHub**: https://github.com/Arnav1771/localhost-ai-hub
+- **Discord**: Use `/help` command
+
+---
+
+**Status**: ✅ Production Ready  
+**Created**: April 9, 2026  
+**Version**: 1.0.0
+
+---
+
+# ARCHIVED - OLD BUILD - The ultimate all-in-one AI agent orchestration system integrating 25+ open-source AI tools. Complete local "AI Operating System" with orchestration, browser automation, multi-agent teams, knowledge management, and unified dashboard - zero cloud, 100% private.
 
 CORE VISION:
 Full-stack AI OS combining: The Brain (Ollama models), The Logic & Glue (n8n/Activepieces automation), The Hands (Skyvern/LaVague browser automation), The Brain Power (CrewAI/AutoGen agents), The Knowledge (AnythingLLM RAG), and The Interface (Open WebUI) - all integrated through unified orchestration hub with real-time monitoring.
