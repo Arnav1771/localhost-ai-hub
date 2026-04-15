@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Workflow, WorkflowForm } from '../components';
+
+interface Workflow {
+  id: string;
+  name: string;
+  description: string;
+}
 
 const Workflows: React.FC = () => {
     const [workflows, setWorkflows] = useState<Workflow[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [selectedWorkflow, setSelectedWorkflow] = useState<Workflow | null>(null);
-    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [newWorkflowName, setNewWorkflowName] = useState<string>('');
+    const [newWorkflowDescription, setNewWorkflowDescription] = useState<string>('');
 
     useEffect(() => {
         const fetchWorkflows = async () => {
             try {
                 const response = await axios.get('/api/workflows');
-                setWorkflows(response.data);
+                setWorkflows(response.data || []);
             } catch (err) {
                 setError('Failed to fetch workflows');
+                console.error(err);
             } finally {
                 setLoading(false);
             }
@@ -23,69 +29,82 @@ const Workflows: React.FC = () => {
         fetchWorkflows();
     }, []);
 
-    const handleCreate = async (workflow: Workflow) => {
+    const handleCreateWorkflow = async () => {
+        if (!newWorkflowName.trim()) {
+            setError('Workflow name is required');
+            return;
+        }
+
         try {
-            const response = await axios.post('/api/workflows', workflow);
+            const response = await axios.post('/api/workflows', {
+                name: newWorkflowName,
+                description: newWorkflowDescription,
+            });
             setWorkflows([...workflows, response.data]);
+            setNewWorkflowName('');
+            setNewWorkflowDescription('');
         } catch (err) {
             setError('Failed to create workflow');
+            console.error(err);
         }
     };
 
-    const handleUpdate = async (workflow: Workflow) => {
-        if (!selectedWorkflow) return;
-        try {
-            const response = await axios.put(`/api/workflows/${selectedWorkflow.id}`, workflow);
-            setWorkflows(workflows.map(w => (w.id === selectedWorkflow.id ? response.data : w)));
-            setIsEditing(false);
-            setSelectedWorkflow(null);
-        } catch (err) {
-            setError('Failed to update workflow');
-        }
-    };
-
-    const handleDelete = async (id: string) => {
+    const handleDeleteWorkflow = async (id: string) => {
         try {
             await axios.delete(`/api/workflows/${id}`);
             setWorkflows(workflows.filter(workflow => workflow.id !== id));
         } catch (err) {
             setError('Failed to delete workflow');
+            console.error(err);
         }
     };
 
-    const handleEdit = (workflow: Workflow) => {
-        setSelectedWorkflow(workflow);
-        setIsEditing(true);
-    };
-
-    const handleCancelEdit = () => {
-        setIsEditing(false);
-        setSelectedWorkflow(null);
-    };
-
     return (
-        <div>
-            <h1>Workflows</h1>
-            {loading ? (
-                <p>Loading...</p>
-            ) : (
-                <div>
-                    {workflows.map(workflow => (
-                        <div key={workflow.id}>
-                            <h2>{workflow.name}</h2>
-                            <p>{workflow.description}</p>
-                            <button onClick={() => handleEdit(workflow)}>Edit</button>
-                            <button onClick={() => handleDelete(workflow.id)}>Delete</button>
-                        </div>
-                    ))}
-                    {isEditing ? (
-                        <WorkflowForm workflow={selectedWorkflow} onSubmit={handleUpdate} onCancel={handleCancelEdit} />
-                    ) : (
-                        <WorkflowForm onSubmit={handleCreate} />
-                    )}
-                </div>
-            )}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="page">
+            <div className="page-header">
+                <h2>Workflows</h2>
+                <p>Create and manage AI workflows</p>
+            </div>
+
+            {error && <div className="error-message">{error}</div>}
+
+            <div className="card">
+                <h3>Create New Workflow</h3>
+                <input
+                    type="text"
+                    value={newWorkflowName}
+                    onChange={(e) => setNewWorkflowName(e.target.value)}
+                    placeholder="Workflow name"
+                />
+                <textarea
+                    value={newWorkflowDescription}
+                    onChange={(e) => setNewWorkflowDescription(e.target.value)}
+                    placeholder="Workflow description"
+                    rows={3}
+                />
+                <button onClick={handleCreateWorkflow}>Create Workflow</button>
+            </div>
+
+            <div className="card">
+                <h3>Existing Workflows</h3>
+                {loading ? (
+                    <p>Loading workflows...</p>
+                ) : workflows.length > 0 ? (
+                    <ul style={{ listStyle: 'none', padding: 0 }}>
+                        {workflows.map(workflow => (
+                            <li key={workflow.id} style={{ marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '6px' }}>
+                                <h4>{workflow.name}</h4>
+                                <p>{workflow.description}</p>
+                                <button onClick={() => handleDeleteWorkflow(workflow.id)} style={{ backgroundColor: '#dc3545' }}>
+                                    Delete
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No workflows created yet.</p>
+                )}
+            </div>
         </div>
     );
 };

@@ -1,0 +1,36 @@
+{
+  "name": "localhost-ai-hub",
+  "version": "1.0.0",
+  "description": "Express Gateway + React Dashboard Monorepo",
+  "main": "gateway/dist/server.js",
+  "workspaces": [
+    "gateway",
+    "dashboard"
+  ],
+  "scripts": {
+    "install-all": "npm install",
+    "build-all": "npm run build -w gateway && npm run build -w dashboard",
+    "build:gateway": "npm run build -w gateway",
+    "build:dashboard": "npm run build -w dashboard",
+    "dev:gateway": "npm run dev -w gateway",
+    "dev:dashboard": "npm run dev -w dashboard",
+    "start": "node gateway/dist/server.js",
+    "start:gateway": "node gateway/dist/server.js",
+    "lint": "npm run lint -w gateway -w dashboard"
+  },
+  "keywords": [
+    "express",
+    "react",
+    "typescript",
+    "vite",
+    "monorepo",
+    "ai",
+    "gateway"
+  ],
+  "author": "Local AI Hub",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.0.4"
+  }
+}

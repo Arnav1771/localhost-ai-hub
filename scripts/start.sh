@@ -1,53 +1,23 @@
 #!/bin/bash
 
-# start.sh - Script to start all services for the AI Orchestration System
+# start.sh - Start all services using Docker Compose
 
-set -e  # Exit immediately if a command exits with a non-zero status
+set -e
 
 # Function to log messages
 log() {
-    local message="$1"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - ${message}"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
-# Function to start Docker services
-start_docker_services() {
-    log "Starting Docker services..."
-    docker-compose up -d
-    log "Docker services started."
-}
+log "Starting Local AI Hub..."
+log "Building and starting Docker services..."
 
-# Function to wait for services to become healthy
-wait_for_services() {
-    log "Waiting for services to become healthy..."
-    services=("gateway" "postgres" "sqlite" "ai_service_1" "ai_service_2" "ai_service_3")  # Add all your service names here
-    for service in "${services[@]}"; do
-        log "Checking health of $service..."
-        while ! docker inspect -f '{{.State.Health.Status}}' "$service" | grep -q "healthy"; do
-            sleep 5
-            log "$service is not healthy yet. Checking again..."
-        done
-        log "$service is healthy."
-    done
-}
+# Start Docker services
+docker-compose up --build
 
-# Function to run migrations
-run_migrations() {
-    log "Running database migrations..."
-    # Assuming you have a migration command; modify as necessary
-    docker-compose exec postgres alembic upgrade head
-    log "Database migrations completed."
-}
-
-# Function to start the application
-start_application() {
-    log "Starting the application..."
-    # You can add commands to start other necessary services or scripts here
-    # For example, starting a background worker, etc.
-    log "Application started."
-}
-
-# Main script execution
+log "All services started successfully!"
+log "Gateway: http://localhost:3001"
+log "Dashboard: http://localhost:3000"
 log "Starting the AI Orchestration System..."
 start_docker_services
 wait_for_services

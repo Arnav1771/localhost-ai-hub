@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# init.sh - Initialization script for the AI agent orchestration system
+# init.sh - Initialize the Local AI Hub project
 
 set -e
 
@@ -9,45 +9,37 @@ log() {
     echo "[INFO] $(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
-# Function to check if a command was successful
-check_command() {
-    if [ $? -ne 0 ]; then
-        echo "[ERROR] Command failed: $1"
-        exit 1
-    fi
-}
+# Check if Node.js is installed
+if ! command -v node &> /dev/null; then
+    echo "[ERROR] Node.js is not installed. Please install Node.js 18 or higher."
+    exit 1
+fi
 
-# Function to initialize the PostgreSQL database
-initialize_database() {
-    log "Initializing PostgreSQL database..."
-    # Assuming we have a Docker container for PostgreSQL named 'ai_postgres'
-    docker exec -it ai_postgres psql -U postgres -c "CREATE DATABASE ai_orchestration;"
-    check_command "Creating PostgreSQL database"
+log "Initializing Local AI Hub..."
+log "Node.js version: $(node --version)"
+log "npm version: $(npm --version)"
 
-    log "Database initialized successfully."
-}
+# Create .env file if it doesn't exist
+if [ ! -f .env ]; then
+    log "Creating .env file from .env.example..."
+    cp .env.example .env
+    log ".env file created. Please update it with your configuration."
+else
+    log ".env file already exists."
+fi
 
-# Function to run migrations
-run_migrations() {
-    log "Running database migrations..."
-    # Assuming we have a migration tool set up
-    npm run migrate
-    check_command "Running migrations"
+# Install dependencies
+log "Installing dependencies..."
+npm run install-all
 
-    log "Migrations completed successfully."
-}
-
-# Function to set up initial configuration
-setup_configuration() {
-    log "Setting up initial configuration..."
-    if [ ! -f .env ]; then
-        cp .env.example .env
-        log ".env file created from .env.example"
-    else
-        log ".env file already exists, skipping creation."
-    fi
-
-    log "Initial configuration setup completed."
+log "Initialization complete!"
+log "Next steps:"
+log "  1. Update .env file with your configuration"
+log "  2. For local development: npm run dev:gateway (in one terminal) and npm run dev:dashboard (in another)"
+log "  3. For Docker deployment: docker-compose up --build"
+log ""
+log "Gateway will run on: http://localhost:3001"
+log "Dashboard will run on: http://localhost:3000"
 }
 
 # Function to create necessary directories
