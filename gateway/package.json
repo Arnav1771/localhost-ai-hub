@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpiler ts-node/register server.ts",
+    "dev:gateway": "npm run dev",
     "build": "tsc"
   },
   "dependencies": {
