@@ -1,892 +1,320 @@
-# localhost-ai-hub 🚀
+# 🤖 localhost-ai-hub
 
-**Express Gateway + React Dashboard Monorepo**
+> **The Local AI Operating System** — 25+ open-source AI tools, 6 architectural layers, unified control dashboard. Zero cloud. 100% private. 100% yours.
 
-A production-ready full-stack application with:
-- ✅ **Express API Gateway** (Node.js + TypeScript) on port 3001
-- ✅ **React Dashboard** (React + Vite + TypeScript) on port 3000
-- ✅ **Vercel Deployment** (Free tier compatible)
-- ✅ **Discord Bot Integration** (Deploy with one command)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18-61dafb)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38bdf8)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
 
-## 🎯 Quick Start
+## 🎯 Core Vision
 
-### Install All Dependencies
+**A full-stack AI OS combining six specialised layers:**
+
+| Layer | Name | Role |
+|-------|------|------|
+| 🧠 | **The Brain** | Local model runtime (Ollama, LocalAI, LM Studio) |
+| ⚙️ | **The Logic & Glue** | Workflow automation (n8n, Activepieces, Windmill) |
+| 🤝 | **The Hands** | Browser automation (Skyvern, LaVague) |
+| ⚡ | **The Brain Power** | Multi-agent frameworks (CrewAI, AutoGen, SuperAGI) |
+| 📚 | **The Knowledge** | RAG & vector storage (AnythingLLM, Chroma, Qdrant) |
+| 🖥️ | **The Interface** | User-facing UIs (Open WebUI, Flowise, LiteLLM) |
+
+All integrated through a **unified control dashboard** with real-time monitoring, service catalog, and health checks.
+
+---
+
+## 🚀 Quick Start
+
 ```bash
+# 1. Clone
+git clone https://github.com/Arnav1771/localhost-ai-hub.git
+cd localhost-ai-hub
+
+# 2. Install dependencies
 npm run install-all
+
+# 3. Start the Gateway (port 3001) + Dashboard (port 3000)
+npm run dev:gateway  # Terminal 1
+npm run dev:dashboard  # Terminal 2
 ```
 
-### Development
-```bash
-# Terminal 1 - Start Gateway (port 3001)
-npm run dev:gateway
+**Visit the dashboard**: http://localhost:3000
 
-# Terminal 2 - Start Dashboard (port 3000)
-npm run dev:dashboard
+---
+
+## 📊 System Architecture: 6 Layers + 25 Services
+
+### 🧠 LAYER 1: THE BRAIN (Model Runtime)
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **Ollama** | 11434 | Primary LLM engine — Llama 3, DeepSeek, Mistral, Phi, etc. GPU-accelerated with auto-download. |
+| **LocalAI** | 8080 | Drop-in OpenAI API replacement. Supports LLaMA, GPT-J, Whisper, Stable Diffusion, function calling. |
+| **LM Studio** | 1234 | Desktop UI for downloading, testing, and serving local models with built-in OpenAI-compatible server. |
+| **GPT4All** | 4891 | Run powerful local AI models on any CPU. Chat with docs entirely offline. |
+
+### ⚙️ LAYER 2: THE LOGIC & GLUE (Workflow Automation)
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **n8n** | 5678 | Enterprise automation standard — 400+ integrations, AI nodes, visual builder, self-hostable. |
+| **Activepieces** | 8000 | Open-source Zapier alternative with a gorgeous UI. Build automations without code. |
+| **Windmill** | 8001 | Turn scripts into workflows, APIs, and UIs. Supports Python, TypeScript, Bash, Go. |
+
+### 🤝 LAYER 3: THE HANDS (Browser & Web Automation)
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **Skyvern** | 8080 | AI-powered browser automation using vision + LLMs. No brittle selectors — reads pages like a human. |
+| **LaVague** | 7860 | Large Action Model framework. Describe your goal in plain English; LaVague handles browser actions. |
+| **Playwright UI** | 9323 | Microsoft Playwright test runner with visual trace viewer. Record, replay, debug browser sessions. |
+
+### ⚡ LAYER 4: THE BRAIN POWER (Multi-Agent Frameworks)
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **CrewAI** | 8100 | Role-playing autonomous AI agents. Researcher + writer + critic crews tackle complex tasks. |
+| **AutoGen Studio** | 8081 | Microsoft's multi-agent framework with visual Studio UI. Build and debug agent pipelines visually. |
+| **SuperAGI** | 3000 | Infrastructure for autonomous AI agents with tools, memory, and performance telemetry. |
+| **OpenHands** | 3001 | Autonomous software development agent. Writes code, runs tests, browses docs, and ships. |
+
+### 📚 LAYER 5: THE KNOWLEDGE (RAG & Vector Storage)
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **AnythingLLM** | 3010 | All-in-one private AI assistant for documents. Ingest PDFs, URLs; chat with total privacy. |
+| **Chroma** | 8200 | AI-native open-source embedding database. Fast similarity search, built-in embedding functions. |
+| **Qdrant** | 6333 | High-performance vector similarity search written in Rust. Handles billions of vectors. |
+| **Weaviate** | 8300 | Cloud-native vector database with built-in ML models, semantic search, and GraphQL. |
+| **Mem0** | 8400 | Persistent memory layer for AI applications. Remembers preferences and context across sessions. |
+
+### 🖥️ LAYER 6: THE INTERFACE (User-Facing UIs)
+
+| Service | Port | Description |
+|---------|------|-------------|
+| **Open WebUI** | 8501 | Best open-source ChatGPT-style UI for local models. RAG, web search, plugins, user management. |
+| **Flowise** | 3100 | Drag-and-drop UI for LLM apps. Build LangChain flows and agents without writing code. |
+| **LiteLLM** | 4000 | Unified API gateway for 100+ LLMs. One OpenAI-compatible endpoint with load balancing + fallbacks. |
+| **Text Gen WebUI** | 7861 | The OG gradio UI (oobabooga). Extension ecosystem, fine-tuning support, notebook mode. |
+| **AI Gateway** | 3001 | This hub's own Express gateway. Unified health checks, service proxying, REST API. |
+
+---
+
+## 🔄 How They Work Together
+
+### "The Complete Loop"
+```
+User → Open WebUI → AI Gateway → Route to:
+  ├── AnythingLLM / Chroma (knowledge needs)
+  ├── n8n / Activepieces (automation logic)
+  ├── Skyvern / LaVague (web tasks)
+  └── CrewAI / AutoGen (multi-agent)
+       ↓
+   Ollama / LocalAI (model inference)
+       ↓
+   Results → User
 ```
 
-**Visit**: http://localhost:3000
-
-### Build for Production
-```bash
-npm run build-all
+### "Multi-Agent Example"
 ```
-
-### Deploy to Vercel
-```bash
-# Push to GitHub
-git push origin main
-
-# In Discord:
-/deploy repo: arnav1771/localhost-ai-hub
+Task: "Research and write a blog post about AI"
+  ↓
+CrewAI creates a crew:
+  ├── Researcher Agent → uses Skyvern to gather web data
+  ├── Analyst Agent → processes via n8n workflow
+  ├── Writer Agent → drafts with Ollama (Llama 3)
+  └── Editor Agent → reviews with AutoGen feedback loop
+       ↓
+   Final output → stored in AnythingLLM workspace
 ```
 
 ---
 
-## 📊 Project Structure
+## 📦 Project Structure
 
 ```
 localhost-ai-hub/
-├── package.json                  (Root - Workspace manager)
-├── tsconfig.json                 (Root - TypeScript config)
-├── vercel.json                   (Vercel deployment config)
+├── package.json                    (Root workspace manager)
+├── tsconfig.json                   (Root TypeScript config)
+├── docker-compose.yml              (Service orchestration)
+├── .env.example                    (Configuration template)
 │
-├── gateway/                      (Express API Server)
-│   ├── package.json             
+├── gateway/                        (Express API Gateway — port 3001)
+│   ├── package.json
 │   ├── tsconfig.json
 │   └── src/
-│       └── server.ts            (Express app)
+│       └── server.ts               (Express app + service proxying)
 │
-└── dashboard/                    (React Frontend)
-    ├── package.json
-    ├── tsconfig.json
-    ├── vite.config.ts
-    ├── index.html
-    └── src/
-        ├── App.tsx
-        ├── main.tsx
-        └── index.css
+├── dashboard/                      (React Control Dashboard — port 3000)
+│   ├── package.json
+│   ├── tailwind.config.js
+│   ├── vite.config.ts
+│   └── src/
+│       ├── App.tsx                 (Root layout + navigation)
+│       ├── types/index.ts          (Service, Layer TypeScript types)
+│       ├── data/
+│       │   ├── services.ts         (25 services seed data — edit here)
+│       │   └── layers.ts           (6 layer definitions + descriptions)
+│       ├── store/
+│       │   └── settings.ts         (Zustand persisted settings)
+│       ├── components/
+│       │   ├── ServiceCard.tsx     (Service card with actions)
+│       │   ├── StatusBadge.tsx     (Online/Offline/CORS badge)
+│       │   └── ServiceDetailDrawer.tsx
+│       ├── pages/
+│       │   ├── DashboardPage.tsx   (Overview + pinned services)
+│       │   ├── ServicesPage.tsx    (Search/filter service catalog)
+│       │   ├── LayersPage.tsx      (Grouped by layer accordion)
+│       │   ├── SetupPage.tsx       (Checklist setup guide)
+│       │   └── SettingsPage.tsx    (Config + health check diagnostics)
+│       └── utils/
+│           └── healthCheck.ts      (Browser-based HTTP health probing)
+│
+└── docs/
+    ├── ARCHITECTURE.md
+    └── SETUP.md
 ```
 
 ---
 
-## 🔌 API Endpoints
+## 🛠️ Dashboard Features
+
+### 1. Dashboard (`/`)
+- Stats cards: total services, online count, offline count
+- Architecture layer overview with per-layer online/total counts
+- Pinned services quick-access grid (customisable)
+- Full service grid with status badges
+
+### 2. Services Catalog
+- Grid view of all 25 services
+- Search by name, description, or tags
+- Filter by layer (Brain, Logic, Hands, etc.)
+- Service cards with: Open, Copy URL, Docs actions
+- Per-service status badges (Online / Offline / CORS / Unknown)
+
+### 3. Layers View
+- Accordion sections grouped by the 6 architectural layers
+- Expandable layer headers with service count
+- Full service cards per layer
+- Colour-coded by layer
+
+### 4. Setup Guide
+- Interactive checklist with progress tracking
+- Prerequisite verification (Docker, Node, Git, hardware)
+- Copy-to-clipboard commands for every step
+- Persistent checkmark state (localStorage)
+
+### 5. Settings
+- Base host override (default: `localhost`)
+- Toggle background health checks on/off
+- Health check interval slider (10s – 5 min)
+- Per-service port override
+- Diagnostics: ping individual services or all at once
+- Reset all settings to defaults
+
+---
+
+## 🔌 API Endpoints (Gateway)
 
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/health` | GET | Health check |
+| `/health` | GET | Gateway health check |
 | `/api` | GET | API info |
 | `/api/status` | GET | Gateway status |
-| `/api/echo` | POST | Echo request |
-
----
-
-## 🤖 Discord Bot Commands
-
-```bash
-# Deploy to Vercel
-/deploy repo: arnav1771/localhost-ai-hub
-
-# Update & redeploy
-/update repo: arnav1771/localhost-ai-hub changes: description
-
-# Validate tokens
-/keys
-
-# Check status
-/status
-
-# Show help
-/help
-```
+| `/api/services` | GET | Live service status list |
 
 ---
 
 ## 📦 Tech Stack
 
-| Component | Tech | Version |
-|-----------|------|---------|
-| Backend | Node.js + Express + TypeScript | 18 / 4.18 / 5.0 |
-| Frontend | React + Vite + TypeScript | 18.2 / 4.3 / 5.0 |
-| Styling | Tailwind CSS | 3.3 |
-| State | Zustand | 4.3 |
-| Deployment | Vercel | Free Tier |
+| Component | Tech |
+|-----------|------|
+| API Gateway | Node.js + Express + TypeScript |
+| Dashboard | React 18 + Vite + TypeScript |
+| Styling | Tailwind CSS 3 (dark mode first) |
+| State | Zustand (persisted to localStorage) |
+| Service Orchestration | Docker Compose |
+
+---
+
+## 🔐 Environment Variables
+
+```bash
+# Copy and edit
+cp .env.example .env
+```
+
+```env
+GATEWAY_PORT=3001
+NODE_ENV=development
+```
 
 ---
 
 ## 🚀 Commands
 
 ```bash
-# Install all
+# Install all dependencies (root workspace)
 npm run install-all
 
-# Build all
-npm run build-all
+# Development
+npm run dev:gateway     # Gateway on :3001
+npm run dev:dashboard   # Dashboard on :3000
 
-# Build individual
+# Production build
+npm run build-all
 npm run build:gateway
 npm run build:dashboard
 
-# Development
-npm run dev:gateway
-npm run dev:dashboard
-
-# Production
+# Start production gateway
 npm start
 ```
 
 ---
 
-## 📚 Documentation
+## ✏️ Customising Services
 
-- **Setup Guides**: See `/packages/localhost-ai-hub/` in the turmux_builder repo
-- **Full Setup**: https://github.com/Arnav1771/localhost-ai-hub
-- **API Docs**: See endpoints section above
+Edit `dashboard/src/data/services.ts` to add, remove, or modify services:
 
----
-
-## 🔐 Environment Variables
-
-Create `.env` file:
-```bash
-GATEWAY_PORT=3001
-NODE_ENV=development
-REACT_APP_API_URL=http://localhost:3001/api
+```ts
+{
+  id: 'my-service',
+  name: 'My Service',
+  layer: 'brain',             // brain | logic | hands | brainpower | knowledge | interface
+  tags: ['llm', 'local'],
+  description: 'Short description shown on the card.',
+  localUrl: 'http://localhost:9999',
+  port: 9999,
+  icon: '🔥',
+  startHint: 'docker compose up my-service',
+  healthCheck: { type: 'http', path: '/health' },
+}
 ```
 
+Per-service port overrides are also available in the **Settings** page (no code changes needed).
+
 ---
 
-## ✅ Features
+## ⚠️ Health Check Limitations
 
-✅ Express API with CORS & Security (Helmet)  
-✅ React Dashboard with real-time status updates  
-✅ TypeScript throughout for type safety  
-✅ Vite for fast builds  
-✅ Dual-build Vercel configuration  
-✅ WebSocket support  
-✅ Logging with Winston  
-✅ Production-ready error handling  
+Browser-based health checks have inherent limitations:
+
+- **HTTP checks**: Fetch the configured path from the browser. If the service has no CORS headers, the browser will block the request. The dashboard will show `CORS blocked` rather than `down`.
+- **TCP checks**: Cannot be done from a browser context. Services configured with `type: 'tcp'` will always show `Unknown`.
+- **Recommendation**: For accurate health monitoring, run the API gateway which can perform server-side checks.
 
 ---
 
 ## 📞 Support
 
-- **Documentation**: See setup guides in repo
 - **GitHub**: https://github.com/Arnav1771/localhost-ai-hub
-- **Discord**: Use `/help` command
+- **Setup Guide**: Open the dashboard → Setup tab
+- **Docs**: `/docs/ARCHITECTURE.md` and `/docs/SETUP.md`
 
 ---
 
-**Status**: ✅ Production Ready  
-**Created**: April 9, 2026  
-**Version**: 1.0.0
-
----
-
-# ARCHIVED - OLD BUILD - The ultimate all-in-one AI agent orchestration system integrating 25+ open-source AI tools. Complete local "AI Operating System" with orchestration, browser automation, multi-agent teams, knowledge management, and unified dashboard - zero cloud, 100% private.
-
-CORE VISION:
-Full-stack AI OS combining: The Brain (Ollama models), The Logic & Glue (n8n/Activepieces automation), The Hands (Skyvern/LaVague browser automation), The Brain Power (CrewAI/AutoGen agents), The Knowledge (AnythingLLM RAG), and The Interface (Open WebUI) - all integrated through unified orchestration hub with real-time monitoring.
-
-🎯 SYSTEM ARCHITECTURE: 6 Layers + 25 Services
-
-═══════════════════════════════════════════════════════════════
-
-LAYER 1: THE BRAIN (Model Runtime)
-═══════════════════════════════════════════════════════════════
-
-1. OLLAMA (Primary Model Engine)
-   - Local model runtime (Llama 3.3 70B, DeepSeek, Mistral, Phi, etc.)
-   - REST API on localhost:11434
-   - Auto-download + auto-update model catalog
-   - GPU acceleration (CUDA/Metal/ROCm)
-   - Vision model support
-
-2. LM STUDIO (Professional Model Manager)
-   - Desktop UI for downloading + testing models
-   - Advanced quantization options
-   - Model benchmarking tools
-   - localhost:1234
-
-3. LOCALAI (OpenAI API Compatibility)
-   - Drop-in replacement for OpenAI API
-   - localhost:8000/v1/chat/completions
-   - Image generation + voice support
-   - Function calling support
-   - Streaming responses
-
-4. VLLM (High-Performance Model Hosting)
-   - Multi-GPU model serving
-   - Batch processing optimization
-   - High throughput inference
-   - localhost:8001
-
-═══════════════════════════════════════════════════════════════
-
-LAYER 2: THE HANDS (Browser & Web Automation)
-═══════════════════════════════════════════════════════════════
-
-5. SKYVERN (AI Browser Agent)
-   - Sees screenshots like a human
-   - Autonomous clicking + form filling
-   - Multi-step workflows
-   - localhost:8882
-
-6. LAVAGUE (DOM-Based Browser Control)
-   - English-to-Playwright/Selenium conversion
-   - Reads webpage DOM structures
-   - Lightweight, model-agnostic
-   - localhost:8883
-
-7. STEEL (Stealthy Browser Engine)
-   - Anti-bot detection built-in
-   - Premium headless browser
-   - Cloudflare bypass support
-   - localhost:8884
-
-8. OPENMANUS (Local-First Web Agent)
-   - Long-running browser tasks
-   - Adaptive wait strategies
-   - Element detection + clicking
-   - localhost:8885
-
-9. AGENT-E (DOM Distillation)
-   - Simplifies webpages for smaller models
-   - Reduces token count by 90%
-   - Optimal for Phi/Mistral models
-   - localhost:8886
-
-10. ZEROSTEP (English Browser Automation)
-    - Plain English script control
-    - Vision-based element detection
-    - Cross-platform compatibility
-    - localhost:8887
-
-═══════════════════════════════════════════════════════════════
-
-LAYER 3: THE LOGIC & GLUE (Workflow Automation)
-═══════════════════════════════════════════════════════════════
-
-11. N8N (Enterprise Automation Standard)
-    - Complex multi-step workflows
-    - 500+ integrations out-of-box
-    - Conditional logic + error handling
-    - localhost:5678
-
-12. ACTIVEPIECES (User-Friendly Automation)
-    - Open-source Zapier alternative
-    - Drag-drop workflow builder
-    - No-code triggers + actions
-    - localhost:3002
-
-13. HUGINN (Set-It-and-Forget-It Agent)
-    - Web monitoring + scraping
-    - Automated action triggers
-    - Natural language agent definition
-    - localhost:3000
-
-14. RELAY (Modern AI-First Automation)
-    - Agent-native workflow platform
-    - LLM-powered decision making
-    - localhost:5000
-
-═══════════════════════════════════════════════════════════════
-
-LAYER 4: THE BRAIN POWER (Multi-Agent Orchestration)
-═══════════════════════════════════════════════════════════════
-
-15. CREWAI (Role-Based Agent Teams)
-    - Define agent roles + responsibilities
-    - Collaborative task execution
-    - Memory persistence
-    - Tool integration
-    - localhost:integrated
-
-16. AUTOGEN (Microsoft Agent Framework)
-    - Multi-agent conversation loop
-    - Automatic task delegation
-    - Self-healing workflows
-    - localhost:integrated
-
-17. OPENDEVIN (Autonomous Software Engineer)
-    - AI software development agent
-    - GitHub integration
-    - Terminal + code execution
-    - localhost:3879
-
-═══════════════════════════════════════════════════════════════
-
-LAYER 5: THE KNOWLEDGE (Data + RAG Management)
-═══════════════════════════════════════════════════════════════
-
-18. ANYTHINGLLM (Knowledge Base Builder)
-    - Convert local files/PDFs to RAG
-    - Multi-workspace support
-    - Embedding model selection
-    - localhost:3001
-
-19. FLOWISE (Visual LLM Chain Builder)
-    - Drag-drop AI application builder
-    - Memory management (short/long-term)
-    - Vector DB integration
-    - localhost:3000
-
-20. LANGFLOW (Modular RAG Pipelines)
-    - Advanced node-based pipeline design
-    - Custom component development
-    - Granular control over AI logic
-    - localhost:3004
-
-21. DIFY (AI Development Platform)
-    - Visual workflow + agent builder
-    - Integrated knowledge base management
-    - Performance monitoring dashboard
-    - localhost:5173
-
-22. SUPABASE (Local Postgres + Vectors)
-    - Full Postgres database
-    - Vector extension for AI memory
-    - Real-time subscriptions
-    - localhost:5432
-
-═══════════════════════════════════════════════════════════════
-
-LAYER 6: THE INTERFACE (User Dashboard + Chat)
-═══════════════════════════════════════════════════════════════
-
-23. OPEN WEBUI (Professional Chat Interface)
-    - ChatGPT-like multi-model interface
-    - Advanced tools/functions system
-    - Document Q&A workspace
-    - Model comparison mode
-    - Admin oversight dashboard
-    - localhost:8080
-
-24. JAN (Minimalist Desktop Client)
-    - Cross-platform (Windows/Mac/Linux)
-    - Lightweight chat interface
-    - Zero-config model loading
-    - localhost:1337
-
-25. UNIFIED CONTROL DASHBOARD (Custom Built)
-    - Central management for all 25 services
-    - Real-time service health + metrics
-    - Agent task orchestration controls
-    - Unified authentication (JWT)
-    - API gateway + load balancing
-    - localhost:3173
-
-═══════════════════════════════════════════════════════════════
-
-UNIFIED CONTROL DASHBOARD (Custom Built):
-- Dashboard showing status of all 25 services
-- Real-time metrics + health checks
-- Unified authentication system (JWT)
-- Service orchestration controls
-- Monitoring + logging aggregation (ELK stack optional)
-- API gateway for all services
-- Environment variable management
-- Docker Compose orchestration
-- Auto-restart on failure
-- GPU resource allocation
-
-═══════════════════════════════════════════════════════════════
-
-HOW THEY WORK TOGETHER:
-
-"The Complete Loop"
-1. User gives command to Open WebUI or Jan
-2. Open WebUI sends request to Unified Dashboard
-3. Dashboard routes to appropriate service:
-   - Knowledge needs → AnythingLLM/Flowise/Langflow
-   - Complex logic → N8N/Activepieces/Huginn/Relay  
-   - Web tasks → Skyvern/LaVague/Steel/OpenManus/Agent-E
-   - Multi-agent → CrewAI/AutoGen teams coordinate
-4. Models in Ollama/LocalAI/vLLM process the request
-5. Results return through Dashboard
-6. User sees unified response in chat
-
-"Browser Automation Example"
-1. Agent requests "Scrape weather from weather.com"
-2. Skyvern/LaVague/Steel receives task
-3. Agent-E simplifies page DOM
-4. LaVague controls browser via Playwright
-5. Agent-E + Ollama model reads simplified DOM
-6. Extracts structured data
-7. Sends to N8N for workflow processing
-8. Results stored in Supabase
-9. AnythingLLM indexes for future queries
-
-"Multi-Agent Orchestration Example"
-1. Task: "Write a blog post about AI"
-2. CrewAI/AutoGen creates teams:
-   - Researcher agent: Uses Huginn to monitor blogs
-   - Analyst agent: Processes data from N8N
-   - Writer agent: Uses Ollama for writing
-   - Editor agent: Reviews and refines
-3. Agents communicate, share memory in Supabase
-4. Final output posted to Relay/scheduled
-
-═══════════════════════════════════════════════════════════════
-
-CORE FEATURES & WORKFLOWS:
-
-1. AGENT ORCHESTRATION SYSTEM
-   - Define 5-10 AI agents with different specializations
-   - Each agent has access to: Ollama models, tools, vector DB
-   - CrewAI + Dify manage inter-agent communication
-   - Collaborative problem solving
-   - Output validation + feedback loops
-
-2. INTELLIGENT DOCUMENT PROCESSING
-   - AnythingLLM ingests documents (PDFs, websites, local files)
-   - Automatic embedding creation (vector DB)
-   - Flowise retrieval chains reference embeddings
-   - Natural question answering over documents
-   - Citation + source tracking
-
-3. WEB INTELLIGENCE GATHERING
-   - Lightpanda automates web interactions
-   - Click buttons, fill forms, extract data
-   - AI vision analyzes screenshots
-   - Data feeds into knowledge base
-   - Real-time web monitoring
-
-4. WORKFLOW AUTOMATION
-   - Activepieces: Trigger workflows (time-based, event-based)
-   - Node-RED: System-level automation (file operations, commands)
-   - Integration with external APIs
-   - Database synchronization (PostgreSQL, MongoDB)
-   - Slack/Discord notifications
-
-5. API COMPATIBILITY LAYER
-   - LocalAI provides OpenAI-compatible endpoints
-   - LocalAI + vLLM handle high-throughput requests
-   - Allows ChatGPT plugins to use local models
-   - Drop-in replacement for existing applications
-   - Function calling like ChatGPT
-   - Streaming responses
-
-6. ADVANCED WEB INTELLIGENCE
-   - Skyvern + LaVague + Steel: Browser automation
-   - Agent-E: Simplifies DOM for smaller models
-   - OpenManus: Long-running web tasks
-   - Huginn: Autonomous monitoring + triggers
-   - Real-time web data into N8N workflows
-
-7. ENTERPRISE WORKFLOW ORCHESTRATION
-   - N8N: Complex multi-step automation (500+ integrations)
-   - Activepieces: User-friendly no-code workflows
-   - Relay: AI-first workflow platform
-   - Huginn: Set-it-and-forget-it monitoring
-   - Conditional logic + error recovery
-
-8. ADVANCED REASONING & MEMORY
-   - Flowise: Complex multi-step LLM chains
-   - Langflow: Modular pipeline design
-   - Dify: Visual workflow composition
-   - Supabase vectors: Persistent AI memory
-   - CrewAI/AutoGen: Multi-agent memory sharing
-
-9. DISTRIBUTED MULTI-AGENT COORDINATION
-   - CrewAI: Specialized agent teams (Researcher, Writer, etc.)
-   - AutoGen: Conversational agent loops
-   - OpenDevin: Autonomous software engineer
-   - Agent communication via memory + message passing
-   - Shared Supabase vector database
-
-10. MONITORING, ANALYTICS & CONTROL
-    - Real-time service health dashboard
-    - Model inference performance metrics
-    - Browser automation success rates
-    - Workflow execution logs
-    - API usage tracking + quotas
-    - Resource allocation (CPU/GPU/RAM)
-    - Error tracking + alerting
-
-11. SECURITY & ISOLATION
-    - 100% localhost (zero internet exposure by default)
-    - Per-workspace isolation (Dify/AnythingLLM/Huginn)
-    - API key management + rotation
-    - JWT authentication + RBAC
-    - Audit logging for compliance
-    - SQLite/PostgreSQL local data storage
-    - Optional VPN/firewall wrapper
-
-═══════════════════════════════════════════════════════════════
-
-TECH STACK (Updated for 25 Services):
-
-Backend Layer:
-- Node.js + Express (unified API gateway)
-- Python FastAPI (service orchestration)
-- Docker Compose (25-service management)
-- PostgreSQL + Supabase (vector-enabled database)
-- QDrant (vector database option)
-- Redis (caching + job queues)
-
-Model Runtime Services:
-- Ollama (primary LLM engine - Llama, DeepSeek, Mistral)
-- LM Studio (model management UI)
-- LocalAI (OpenAI API compatibility)
-- vLLM (high-performance serving)
-
-Browser Automation Services:
-- Skyvern (AI browser agent)
-- LaVague (DOM-based control)
-- Steel (stealthy browser)
-- OpenManus (long-running tasks)
-- Agent-E (DOM simplification)
-- ZeroStep (English automation)
-
-Workflow Automation Services:
-- N8N (enterprise standard)
-- Activepieces (user-friendly alternative)
-- Huginn (monitoring + triggers)
-- Relay (AI-first platform)
-
-Multi-Agent Services:
-- CrewAI (role-based teams)
-- AutoGen (conversational loops)
-- OpenDevin (autonomous engineer)
-
-Knowledge Management Services:
-- AnythingLLM (RAG builder)
-- Flowise (LLM chain builder)
-- Langflow (modular pipeline)
-- Dify (platform + RAG)
-- Supabase (vector database)
-
-User Interface Services:
-- Open WebUI (professional chat)
-- Jan (minimal desktop client)
-- Custom Dashboard (React control panel)
-
-Frontend Architecture:
-- React + TypeScript
-- WebSocket real-time updates
-- Material-UI + Tailwind CSS
-- Mobile-responsive design
-- Dark mode + accessibility
-
-Infrastructure:
-- Docker Compose (orchestration)
-- .env file configuration
-- Health check endpoints
-- Service discovery via internal DNS
-- Named volumes for persistence
-- GPU resource allocation
-- Network isolation layers
-
-═══════════════════════════════════════════════════════════════
-
-PROJECT STRUCTURE:
-
-localhost-ai-hub/
-├── docker-compose.yml (Main service orchestration)
-├── .env.example (Configuration template)
-├── services/ (25 integrated services)
-│   ├── models/
-│   │   ├── ollama/ (LLM runtime)
-│   │   ├── lm-studio/ (Model management)
-│   │   ├── localai/ (OpenAI compatibility)
-│   │   └── vllm/ (High-performance serving)
-│   ├── browser-automation/
-│   │   ├── skyvern/ (AI browser agent)
-│   │   ├── lavague/ (DOM control)
-│   │   ├── steel/ (Stealthy browser)
-│   │   ├── openmanus/ (Long-running tasks)
-│   │   ├── agent-e/ (DOM simplification)
-│   │   └── zerostep/ (English automation)
-│   ├── workflow-automation/
-│   │   ├── n8n/ (Enterprise standard)
-│   │   ├── activepieces/ (User-friendly)
-│   │   ├── huginn/ (Monitoring)
-│   │   └── relay/ (AI-first)
-│   ├── agents/
-│   │   ├── crewai/ (Role-based teams)
-│   │   ├── autogen/ (Conversational loops)
-│   │   └── opendevin/ (Autonomous engineer)
-│   ├── knowledge/
-│   │   ├── anythingllm/ (RAG builder)
-│   │   ├── flowise/ (LLM chains)
-│   │   ├── langflow/ (Modular pipelines)
-│   │   ├── dify/ (Platform)
-│   │   └── supabase/ (Vector database)
-│   ├── interface/
-│   │   ├── open-webui/ (Professional chat)
-│   │   └── jan/ (Minimal client)
-│   └── orchestration/
-│       └── unified-dashboard/ (Control panel)
-│
-├── gateway/
-│   ├── server.ts (API gateway + orchestration)
-│   ├── routes/
-│   │   ├── services.ts (service management)
-│   │   ├── agents.ts (agent configuration)
-│   │   ├── workflows.ts (workflow execution)
-│   │   ├── documents.ts (knowledge base)
-│   │   ├── monitoring.ts (health + metrics)
-│   │   └── auth.ts (authentication)
-│   ├── middleware/
-│   │   ├── auth.ts
-│   │   ├── logging.ts
-│   │   └── error-handling.ts
-│   ├── controllers/
-│   │   ├── service-controller.ts
-│   │   ├── agent-controller.ts
-│   │   ├── workflow-controller.ts
-│   │   └── monitoring-controller.ts
-│   ├── services/
-│   │   ├── ollama-client.ts
-│   │   ├── dify-client.ts
-│   │   ├── docker-manager.ts
-│   │   └── health-checker.ts
-│   ├── websocket/
-│   │   └── realtime-events.ts
-│   ├── config/
-│   │   ├── service-config.ts
-│   │   └── model-config.ts
-│   └── db/
-│       └── schema.sql
-│
-├── dashboard/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ServiceStatus.tsx
-│   │   │   ├── AgentManager.tsx
-│   │   │   ├── WorkflowBuilder.tsx
-│   │   │   ├── MonitoringPanel.tsx
-│   │   │   └── SettingsPanel.tsx
-│   │   ├── pages/
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── Services.tsx
-│   │   │   ├── Agents.tsx
-│   │   │   ├── Workflows.tsx
-│   │   │   └── Admin.tsx
-│   │   ├── hooks/
-│   │   │   ├── useServices.ts
-│   │   │   ├── useWebSocket.ts
-│   │   │   └── useMetrics.ts
-│   │   ├── App.tsx
-│   │   └── index.css
-│   ├── package.json
-│   └── Dockerfile
-│
-├── config/
-│   ├── agent-definitions.js (Agent roles + capabilities)
-│   ├── model-config.js (Model selection per service)
-│   ├── api-mappings.js (Service endpoint mapping)
-│   ├── workflow-templates.js (Pre-built workflows)
-│   └── security-rules.js (Access control)
-│
-├── scripts/
-│   ├── init.sh (First-time setup)
-│   ├── start.sh (Start all services)
-│   ├── stop.sh (Graceful shutdown)
-│   ├── cleanup.sh (Remove volumes + data)
-│   ├── health-check.sh (Verify all services)
-│   ├── download-models.sh (Pre-cache LLMs)
-│   └── logs.sh (Centralized logging)
-│
-├── docs/
-│   ├── SETUP.md (Installation guide)
-│   ├── ARCHITECTURE.md (System design)
-│   ├── QUICK_START.md (5-minute demo)
-│   ├── API_REFERENCE.md (All endpoints)
-│   ├── WORKFLOWS.md (Pre-built templates)
-│   ├── AGENTS.md (Agent definitions)
-│   ├── TROUBLESHOOTING.md (Common issues)
-│   └── DEPLOYMENT.md (Production guide)
-│
-├── examples/
-│   ├── 01-simple-chat.ts (Ollama + Open WebUI)
-│   ├── 02-research-agent.ts (CrewAI + AutoGen team)
-│   ├── 03-document-qa.ts (AnythingLLM + Flowise)
-│   ├── 04-web-scraping.ts (Skyvern + LaVague automation)
-│   ├── 05-workflow-automation.ts (N8N + Activepieces)
-│   ├── 06-multi-agent-orchestra.ts (Full 25-service system)
-│   ├── 07-browser-agent.ts (OpenManus + Steel + Agent-E)
-│   ├── 08-monitoring-agent.ts (Huginn + CrewAI)
-│   └── 09-enterprise-workflow.ts (N8N + Relay + CrewAI)
-│
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   └── e2e/
-│
-├── requirements.txt
-├── package.json
-└── README.md
-
-═══════════════════════════════════════════════════════════════
-
-DEPLOYMENT ARCHITECTURE:
-
-Local Development:
-- docker-compose.yml with all 12 services
-- Volume mounts for data persistence
-- Environment-based configuration
-- Local network (localhost)
-
-Production (Optional Cloud):
-- Docker Swarm or Kubernetes
-- Cloud storage for models
-- Multi-replica services
-- Load balancing
-- TLS certificates
-- Rate limiting + auth
-
-═══════════════════════════════════════════════════════════════
-
-API ENDPOINTS (Gateway):
-
-Service Management:
-- GET  /api/services           → List all services + status
-- POST /api/services/{id}/restart → Restart service
-- GET  /api/health             → System health check
-- GET  /api/metrics            → Performance metrics
-
-Agent Management:
-- GET  /api/agents             → List configured agents
-- POST /api/agents             → Create new agent
-- POST /api/agents/{id}/task   → Assign task to agent
-- GET  /api/agents/{id}/status → Agent status + memory
-
-Workflow Execution:
-- POST /api/workflows/execute  → Run workflow
-- GET  /api/workflows/{id}     → Workflow status
-- GET  /api/workflows/history  → Execution history
-- WEBSOCKET /ws/workflows/{id} → Real-time updates
-
-OpenAI Compatibility (via LocalAI):
-- POST /v1/chat/completions    → Chat completions
-- POST /v1/completions         → Text completions
-- GET  /v1/models              → Available models
-
-═══════════════════════════════════════════════════════════════
-
-KEY DIFFERENTIATORS:
-
-1. COMPLETE SYSTEM
-   - Not just a chat interface - full orchestration platform
-   - All tools integrated under single dashboard
-   - No internet required (100% localhost)
-
-2. MULTI-AGENT ORCHESTRATION
-   - CrewAI teamwork for complex reasoning
-   - Dify workflows for visual designs
-   - Collaborative problem-solving
-
-3. ADVANCED KNOWLEDGE MANAGEMENT
-   - AnythingLLM: Document ingestion
-   - Vector DB: Semantic search
-   - Retrieval chains: Context-aware responses
-
-4. BROWSER INTELLIGENCE
-   - Skyvern + LaVague: Automated web interactions
-   - Steel: Stealth browsing
-   - OpenManus: Long-running tasks
-   - Agent-E: Page simplification
-   - Real-time web data gathering
-   - AI vision + DOM analysis
-
-5. ENTERPRISE AUTOMATION & INTEGRATION
-   - N8N: 500+ integrations
-   - Activepieces: User-friendly workflows
-   - Relay: AI-native automation
-   - Huginn: Autonomous monitoring
-   - External API + database connections
-
-6. MULTI-AGENT COORDINATION
-   - CrewAI teams with specialized roles
-   - AutoGen conversational loops
-   - OpenDevin autonomous engineer
-   - Shared vector memory (Supabase)
-   - Agent-to-agent messaging
-
-7. DEVELOPMENT FRIENDLY
-   - OpenAI compatibility (LocalAI + vLLM)
-   - Extensive API documentation (50+ endpoints)
-   - Pre-built examples (9+ workflows)
-   - Docker-based (works everywhere)
-   - WebSocket real-time support
-
-═══════════════════════════════════════════════════════════════
-
-QUICK START (3 Steps):
-
-1. Install Docker + Docker Compose
-2. Clone repo + run: docker-compose up
-3. Open http://localhost:3173 (dashboard)
-
-All 25 services start automatically. Models auto-download. Ready in ~2 minutes.
-
-═══════════════════════════════════════════════════════════════
-
-MONITORING & OBSERVABILITY:
-
-- Real-time service health dashboard
-- Model inference latency tracking
-- Agent task execution metrics
-- API usage analytics
-- Error rate monitoring
-- Vector DB query performance
-- GPU/CPU/Memory utilization graphs
-- Centralized logging (ELK stack optional)
-- Alert system for failures
-
-═══════════════════════════════════════════════════════════════
-
-SECURITY FEATURES:
-
-- JWT authentication
-- Role-based access control (RBAC)
-- API key management
-- Rate limiting per endpoint
-- Input validation + sanitization
-- SQL injection prevention
-- CORS configuration
-- Audit logging
-- Data encryption at rest
-- Isolated containers + networks
-
-## 🎯 Project Highlights
-
-| Feature | Details |
-|---------|---------|
-| **Services** | 25 integrated open-source tools |
-| **Models** | Ollama + LM Studio + LocalAI + vLLM (Llama, DeepSeek, Mistral, Phi) |
-| **Browser Agents** | 6 automation frameworks (Skyvern, LaVague, Steel, OpenManus, Agent-E, ZeroStep) |
-| **Automation** | N8N + Activepieces + Huginn + Relay |
-| **Multi-Agents** | CrewAI + AutoGen + OpenDevin teams |
-| **Knowledge** | AnythingLLM + Flowise + Langflow + Dify + Supabase vectors |
-| **Interface** | Open WebUI + Jan + Unified dashboard |
-| **Deployment** | Docker Compose (docker-compose up) |
-| **Setup Time** | ~2 minutes total |
-| **Data** | 100% local + private (no cloud required) |
-
-## 💡 Why Build This?
-
-1. **Complete AI Environment** - Everything needed for serious AI development
-2. **No API Costs** - All models run locally (free)
-3. **Maximum Privacy** - All data stays on your machine
-4. **Developer Friendly** - Extensive documentation + examples
-5. **Production Ready** - Can be deployed to servers/cloud
-6. **Educational** - Learn how AI orchestration works
-7. **Customizable** - Extend with custom agents + tools
-8. **Scalable** - Runs on laptops or enterprise servers
-
-## 🚀 Next Steps
-
-After building:
-1. Test with example workflows
-2. Create custom agents
-3. Integrate external APIs
-4. Deploy to production
-5. Extend with plugins
-
----
-
-**Build Time:** 5-7 days | **Difficulty:** ⚠️ Advanced | **Team Size:** 2-3 devs
+**Version**: 2.0.0 — Local AI OS Dashboard  
+**License**: MIT
