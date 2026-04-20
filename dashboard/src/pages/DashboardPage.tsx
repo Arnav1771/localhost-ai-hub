@@ -16,10 +16,12 @@ const DashboardPage: React.FC = () => {
     if (!healthCheckEnabled) return;
 
     const runChecks = () => {
-      SERVICES.forEach(async (svc) => {
-        const status = await checkServiceHealth(svc);
-        setServiceStatus(svc.id, status);
-      });
+      Promise.all(
+        SERVICES.map(async (svc) => {
+          const status = await checkServiceHealth(svc);
+          setServiceStatus(svc.id, status);
+        })
+      );
     };
 
     runChecks();
